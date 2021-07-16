@@ -8,21 +8,23 @@ ul.setAttribute("id", "playerList");
 
 button.addEventListener("click", function (e) {
     e.preventDefault();
+    
+    if(players === 10){
+        alert("No puedo agregar mas de 10 usuario");
+        return;
+    }
+    
     const playerName = prompt("Introduce el nombre del jugador");
-    players.push(playerName);
-    cont.appendChild(ul);
+    if(!playerName){
+        alert("Escribe un nombre de jugador");
+    }else{
+        players.push(playerName);
+        cont.appendChild(ul);
+        updatePlayers();
+    }
 
-    updatePlayers();
 });
 
-button.addEventListener("click", function (e) {
-    e.preventDefault();
-    const playerName = prompt("Introduce el nombre del jugador");
-    players.push(playerName);
-    cont.appendChild(ul);
-
-    updatePlayers();
-});
 
 function updatePlayers() {
     for(let index = 0; index <= players.length -1; index++){
